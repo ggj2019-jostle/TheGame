@@ -7,8 +7,8 @@ public class CelestialBody : MonoBehaviour
     public bool fixedBody = true;
     public GameObject star;
 
-    public int translationSpeed = 0;
-    public int spinSpeed = 10;
+    public int translationSpeed = 10;
+    public int rotationSpeed = 10;
     private float timecounter = 0;
 
     public CelestialBody(Color color, int temperature, float mass, float radius, float luminosity)
@@ -30,7 +30,7 @@ public class CelestialBody : MonoBehaviour
     {
         if (star != null)
         {
-            float speed = timecounter * translationSpeed / 50;
+            float speed = timecounter * translationSpeed / 100;
 
             float R2x = Mathf.Pow(transform.position.x - star.transform.position.x, 2);
             float R2y = Mathf.Pow(transform.position.y - star.transform.position.y, 2);
@@ -48,7 +48,8 @@ public class CelestialBody : MonoBehaviour
 
     private void applySpin()
     {
-        transform.Rotate(new Vector3(1, 0, 1), spinSpeed / 360 * Time.deltaTime);
+
+        transform.Rotate(new Vector3(0, -1, 0), rotationSpeed * Time.deltaTime);
     }
 
     private void FixedUpdate()
