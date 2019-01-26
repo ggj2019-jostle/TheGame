@@ -40,9 +40,9 @@ public class CelestialBody : MonoBehaviour
 
             float x = Mathf.Cos(speed) * R;
             float y = 0;
-            float z = Mathf.Sin(speed) * R;
+            float z_ = Mathf.Sin(speed) * R;
 
-            transform.position = new Vector3(x, y, z);
+            transform.position = new Vector3(x, y, z_);
         }
     }
 
@@ -53,7 +53,7 @@ public class CelestialBody : MonoBehaviour
     }
 
     private void applyGravity() {
-
+        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     private void FixedUpdate()
