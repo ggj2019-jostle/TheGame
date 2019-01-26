@@ -53,7 +53,7 @@ public class CelestialBody : MonoBehaviour
     }
 
     private void applyGravity() {
-        //glen to give you a player object here soon.
+        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     private void FixedUpdate()
