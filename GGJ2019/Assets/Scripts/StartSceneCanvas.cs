@@ -21,4 +21,5 @@ public class StartSceneCanvas: MonoBehaviour
         Debug.Log("Start button clicked");
         SceneManager.LoadScene("SampleScene");
     }
+
 }
