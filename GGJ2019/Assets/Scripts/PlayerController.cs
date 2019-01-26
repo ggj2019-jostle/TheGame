@@ -4,23 +4,42 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    GameObject ship;
-    GameObject cube;
-    // Start is called before the first frame update
+    public float speed = 20;
+    public float turnSpeed = 7;
+    public float drag = 5;
+    public float turnRadius = 3;
+
     void Start()
     {
-        //ship = GetComponent<GameObject>();
-        cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.AddComponent<Rigidbody>();
-        cube.GetComponent<Rigidbody>().useGravity = false;
-        //cube.AddComponent<BoxCollider>();
-        cube.transform.position = new Vector3(0, 0, 3);
-        cube.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -60));
+        GetComponent<Rigidbody>().drag = drag;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.forward);
+        bool turning = false;
+
+        if (Input.GetKey(KeyCode.UpArrow)) {
+            GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, speed, 0));
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow)) {
+            GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, -speed, 0));
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow)) {
+            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, -turnRadius);
+            GetComponent<Rigidbody>().AddRelativeForce(new Vector3(-turnSpeed, 0, 0));
+            turning = true;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow)) {
+            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, turnRadius);
+            GetComponent<Rigidbody>().AddRelativeForce(new Vector3(turnSpeed, 0, 0));
+            turning = true;
+        }
+
+        if(!turning) {
+            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
+        }
     }
 }
