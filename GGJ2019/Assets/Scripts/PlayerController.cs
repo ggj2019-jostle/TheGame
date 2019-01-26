@@ -19,21 +19,21 @@ public class PlayerController : MonoBehaviour
         bool turning = false;
 
         if (Input.GetKey(KeyCode.UpArrow)) {
-            GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, speed, 0));
+            GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, speed));
         }
 
         if (Input.GetKey(KeyCode.DownArrow)) {
-            GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, -speed, 0));
+            GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, -speed));
         }
 
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, -turnRadius);
+            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, -turnRadius, 0);
             GetComponent<Rigidbody>().AddRelativeForce(new Vector3(-turnSpeed, 0, 0));
             turning = true;
         }
 
         if (Input.GetKey(KeyCode.RightArrow)) {
-            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, turnRadius);
+            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, turnRadius, 0);
             GetComponent<Rigidbody>().AddRelativeForce(new Vector3(turnSpeed, 0, 0));
             turning = true;
         }
