@@ -46,21 +46,21 @@ public class CelestialBody : MonoBehaviour
         }
     }
 
-    private void applySpin()
+    private void applyRotation()
     {
 
         transform.Rotate(new Vector3(0, -1, 0), rotationSpeed * Time.deltaTime);
     }
 
     private void applyGravity() {
-        //glen to give you a player object here soon.
+
     }
 
     private void FixedUpdate()
     {
         timecounter += Time.deltaTime;
         applyTranlation();
-        applySpin();
+        applyRotation();
         applyGravity();
     }
 
