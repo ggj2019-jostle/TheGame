@@ -20,12 +20,18 @@ public class GameOverSceneCanvas : MonoBehaviour
     {
         endingMsg.text = ScoreHolder.GetEndingMsg();
         scoreMsg.text = "Your Score: " + ScoreHolder.GetThisRoundScore();
-        exitButton.onClick.AddListener(ExitGame);
-        restartButton.onClick.AddListener(GoToStartScene);
+        exitButton.onClick.AddListener(() => StartCoroutine(ExitGame()));
+        restartButton.onClick.AddListener(() => StartCoroutine(GoToStartScene()));
     }
 
-    void ExitGame()
+    IEnumerator ExitGame()
     {
+
+        var source = GameObject.FindGameObjectsWithTag("SFX")[0].GetComponent<AudioSource>();
+
+        source.Play();
+        yield return new WaitWhile(() => source.isPlaying);
+
         Debug.Log("Exit button clicked");
         endingMsg.text = "Thank you ~";
         scoreMsg.enabled = false;
@@ -33,9 +39,15 @@ public class GameOverSceneCanvas : MonoBehaviour
         exitButton.interactable = false;
     }
 
-    void GoToStartScene()
+    IEnumerator GoToStartScene()
     {
+        var source = GameObject.FindGameObjectsWithTag("SFX")[0].GetComponent<AudioSource>();
+
+        source.Play();
+        yield return new WaitWhile(() => source.isPlaying);
+
         Debug.Log("Restart button clicked");
         SceneManager.LoadScene("StartScene");
     }
+
 }
