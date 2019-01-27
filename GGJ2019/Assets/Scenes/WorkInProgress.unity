@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 2868356927368934997, guid: 77154c8666b896d4d8683f467c023cd7,
         type: 3}
       propertyPath: RotationSpeed
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77154c8666b896d4d8683f467c023cd7, type: 3}
@@ -266,7 +266,7 @@ PrefabInstance:
     - target: {fileID: 5884580019740034001, guid: 5ec3c6888e1189249b91c2073eb965bd,
         type: 3}
       propertyPath: RotationSpeed
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec3c6888e1189249b91c2073eb965bd, type: 3}
@@ -497,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100273250, guid: 4e3abf65e4e996a49bfa16c6469ea143, type: 3}
       propertyPath: RotationSpeed
-      value: 3
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e3abf65e4e996a49bfa16c6469ea143, type: 3}
