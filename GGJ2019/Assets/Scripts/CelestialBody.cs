@@ -5,7 +5,7 @@ public class CelestialBody : MonoBehaviour
 {
     // For all the int values the reference is our Sun which would be equals to 1
 
-    public GameObject _star;
+    public CelestialBody _star;
     public bool ApplyGravityToPlayer;
     private Rigidbody rb;
 
@@ -59,7 +59,7 @@ public class CelestialBody : MonoBehaviour
             float y = 0;
             float z = Mathf.Sin(speed) * R;
 
-            transform.position = new Vector3(x, y, z);
+            transform.position = new Vector3(x, y, z) + _star.transform.position;
         }
     }
 
@@ -85,7 +85,11 @@ public class CelestialBody : MonoBehaviour
         float forceMagnitute = Constants.GRAVITACIONAL * (rb.mass * player_rb.mass) / Mathf.Pow(distanceMagnitude, 2);
         Vector3 force = distance.normalized * forceMagnitute;
 
-        player_rb.AddForce(-force);
+        if (!float.IsNaN(force.x) || !float.IsNaN(force.y) || !float.IsNaN(force.z))
+        {
+            player_rb.AddForce(-force);
+        }
+        
     }
 
 

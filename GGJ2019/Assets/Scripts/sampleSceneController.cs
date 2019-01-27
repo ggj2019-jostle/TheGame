@@ -18,12 +18,16 @@ public class SampleSceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PopulateStars();
         PopulatePlayer();
+        PopulateStars();
+        AddCamera();
     }
 
     // Update is called once per frame
-    void Update(){}
+    void Update()
+    {
+
+    }
 
     private void PopulatePlayer()
     {
@@ -36,9 +40,8 @@ public class SampleSceneController : MonoBehaviour
         starGenerator.SetUp(numberOfStars);
     }
 
-    private void populateGame()
+    private void AddCamera()
     {
-        GameObject instance = Instantiate(Resources.Load("nicePlanet", typeof(GameObject))) as GameObject;
-        instance.transform.position = new Vector3(0, 0, 50);
+        GameObject player = Instantiate(Resources.Load("Main Camera", typeof(GameObject))) as GameObject;
     }
 }

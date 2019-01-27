@@ -5,7 +5,7 @@ using UnityEngine;
 public class StarGenerator : MonoBehaviour
 {
     public int minNumberOfStars = 3;
-    public int maxNumberOfStars = 7;
+    public int maxNumberOfStars = 5;
 
     private PlanetGenerator planetGenerator = new PlanetGenerator();
 
@@ -27,7 +27,11 @@ public class StarGenerator : MonoBehaviour
 
     private void addStar(int x, int z)
     {
-        GameObject instance = Instantiate(Resources.Load("nicePlanet", typeof(GameObject))) as GameObject;
+        var debug = Resources.Load<CelestialBody>("PS_BlueSun");
+        CelestialBody instance = Instantiate(debug);
         instance.transform.position = new Vector3(x, 0, z);
+
+        int numberOfPlanets = Random.Range(planetGenerator.minNumberOfPlanets, planetGenerator.maxNumberOfPlanets);
+        planetGenerator.SetUp(numberOfPlanets, instance);
     }
 }
