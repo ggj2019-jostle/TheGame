@@ -16,9 +16,27 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody>().drag = drag;
     }
 
-    void OnCollisionEnter(Collision collision) {
-        Debug.Log("collision");
-        GetComponent<Rigidbody>().velocity = -GetComponent<Rigidbody>().velocity;
+    private void OnTriggerEnter(Collider other) {
+        function1();
+        //
+        //
+        //
+        //
+        //
+        function2();
+    }
+
+    private void function1(){
+
+    }
+
+    //
+    //
+    //
+    //
+
+    private void function2(){
+        
     }
 
     void Update()
