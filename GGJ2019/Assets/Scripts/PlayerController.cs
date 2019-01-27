@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float drag = 5;
     public float turnRadius = 3;
 
-    public float landSpeedLimit = 20;
+    public float landSpeedLimit = 120;
     public float damageSpeedLimit = 50;
 
     private float score = 0; 
@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour
         if (velocity < landSpeedLimit)
         {
             ScoreHolder.SetEndingMsg("Successfully landed on a new Planet!");
+        }
+        else
+        {
+            ScoreHolder.SetEndingMsg("Spaceship crashed!");
         }
 
         //update score
