@@ -6,6 +6,7 @@ public class CelestialBody : MonoBehaviour
     // For all the int values the reference is our Sun which would be equals to 1
 
     public GameObject _star;
+    public bool ApplyGravityToPlayer;
     private Rigidbody rb;
 
     public int TranslationSpeed;
@@ -18,11 +19,13 @@ public class CelestialBody : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        Physics.gravity = Vector3.zero;
+        ApplyGravityToPlayer = true;
+
         TranslationSpeed = TranslationSpeed == null ? 10 : TranslationSpeed;
         RotationSpeed = RotationSpeed == null ? 10 : RotationSpeed;
 
         Timecounter = 0;
-
         player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
@@ -69,14 +72,15 @@ public class CelestialBody : MonoBehaviour
     private void ApplyGravity()
     {
         Rigidbody player_rb = player.GetComponent<Rigidbody>();
+        Debug.Log(player_rb == null);
+
+
 
         Vector3 distance = player_rb.position - rb.position;
         float distanceMagnitude = distance.magnitude;
 
-
-        if (Mathf.Pow(distanceMagnitude, -2) < 0.1)
+        if (Mathf.Pow(distanceMagnitude, -2) * rb.mass/player_rb.mass < 0.01)
             return;
-
 
         float forceMagnitute = Constants.GRAVITACIONAL * (rb.mass * player_rb.mass) / Mathf.Pow(distanceMagnitude, 2);
         Vector3 force = distance.normalized * forceMagnitute;
@@ -90,7 +94,8 @@ public class CelestialBody : MonoBehaviour
         Timecounter += Time.deltaTime;
         ApplyTranslation();
         ApplyRotation();
-        ApplyGravity();
+        if (ApplyGravityToPlayer)
+            ApplyGravity();
     }
 
 
