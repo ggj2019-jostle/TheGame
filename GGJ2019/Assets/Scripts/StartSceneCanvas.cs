@@ -13,7 +13,6 @@ public class StartSceneCanvas : MonoBehaviour
 
     void Start()
     {
-        //startButton.onClick.AddListener(HandleClick);
         startButton.onClick.AddListener(() => StartCoroutine(waitSoundFinishes()));
     }
 
@@ -24,14 +23,12 @@ public class StartSceneCanvas : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
 
     }
-
     IEnumerator waitSoundFinishes()
     {
        var source = GameObject.FindGameObjectsWithTag("SFX")[0].GetComponent<AudioSource>();
 
         source.Play();
         yield return new WaitWhile(() => source.isPlaying);
-
         HandleClick();
     }
 

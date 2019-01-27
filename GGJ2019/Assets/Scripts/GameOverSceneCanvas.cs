@@ -18,6 +18,8 @@ public class GameOverSceneCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        endingMsg.text = ScoreHolder.GetEndingMsg();
+        scoreMsg.text = "Your Score: " + ScoreHolder.GetThisRoundScore();
         exitButton.onClick.AddListener(ExitGame);
         restartButton.onClick.AddListener(GoToStartScene);
     }
