@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed = 7;
     public float drag = 5;
     public float turnRadius = 3;
+
+    public float landSpeedLimit = 20;
+    public float damageSpeedLimit = 50;
+
+    private float score = 0; 
 
     void Start()
     {
@@ -27,6 +33,18 @@ public class PlayerController : MonoBehaviour
     }
 
     private void function1(){
+        float velocity = GetComponent<Rigidbody>().velocity.magnitude;
+
+        if (velocity < landSpeedLimit)
+        {
+            ScoreHolder.SetEndingMsg("Successfully landed on a new Planet!");
+        }
+
+        //update score
+        ScoreHolder.SetScore(score);
+        
+
+        SceneManager.LoadScene("GameOverScene");
 
     }
 
@@ -82,5 +100,12 @@ public class PlayerController : MonoBehaviour
         // Vector3 currentPosition = GetComponent<Rigidbody>().transform.position;
 
         // GetComponent<Rigidbody>().transform.position = new Vector3(currentPosition.x, 0, currentPosition.z);
+
+        //TODO: Code to update energy
+
+
+        // Code to update score
+        score += Time.deltaTime;
+
     }
 }

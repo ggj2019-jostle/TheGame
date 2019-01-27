@@ -187,6 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 177940536}
   - component: {fileID: 177940539}
   - component: {fileID: 177940538}
@@ -314,6 +315,11 @@ GameObject:
   - component: {fileID: 1203686739}
   - component: {fileID: 1203686738}
 >>>>>>> 238d6575f3b8c7a1b011687d13b6f2d963d3de25
+=======
+  - component: {fileID: 1203686740}
+  - component: {fileID: 1203686739}
+  - component: {fileID: 1203686738}
+>>>>>>> 238d6575f3b8c7a1b011687d13b6f2d963d3de25
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -384,6 +390,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &365047455
@@ -416,6 +423,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 177940536}
   m_RootOrder: 1
+=======
+  m_RootOrder: 2
+>>>>>>> 238d6575f3b8c7a1b011687d13b6f2d963d3de25
 =======
   m_RootOrder: 2
 >>>>>>> 238d6575f3b8c7a1b011687d13b6f2d963d3de25
