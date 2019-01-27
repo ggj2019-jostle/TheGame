@@ -18,7 +18,13 @@ public class StartSceneCanvas: MonoBehaviour
 
     public void HandleClick()
     {
+<<<<<<< HEAD
+=======
+        Debug.Log("Start button clicked");
+        new WaitForSeconds(3);
+>>>>>>> 3e2766cf30d042ee37e6fd48123a6fc7154248f4
         SceneManager.LoadScene("SampleScene");
+
     }
 
 }
