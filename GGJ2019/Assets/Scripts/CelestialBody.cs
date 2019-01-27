@@ -72,8 +72,6 @@ public class CelestialBody : MonoBehaviour
     private void ApplyGravity()
     {
         Rigidbody player_rb = player.GetComponent<Rigidbody>();
-        Debug.Log(player_rb == null);
-
 
 
         Vector3 distance = player_rb.position - rb.position;
