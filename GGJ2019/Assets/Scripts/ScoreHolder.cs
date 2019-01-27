@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreHolder : MonoBehaviour
+public static class ScoreHolder 
 {
-    public int no1 = 0;
-    public int no2 = 0;
-    public int no3 = 0;
-    public int thisRound;
+    public static float no1 = 0;
+    public static float no2 = 0;
+    public static float no3 = 0;
+    public static float thisRound;
 
-    public void SetScore(int score)
+    public static string endingMsg = "";
+
+
+    public static void SetScore(float score)
     {
         thisRound = score;
         if (score > no3)
@@ -36,23 +39,33 @@ public class ScoreHolder : MonoBehaviour
 
     }
 
-    public int GetThisRoundScore()
+    public static string GetThisRoundScore()
     {
-        return thisRound;
+        return thisRound.ToString();
     }
 
-    public int GetNo1Score()
+    public static float GetNo1Score()
     {
         return no1;
     }
 
-    public int GetNo2Score()
+    public static float GetNo2Score()
     {
         return no2;
     }
 
-    public int GetNo3Score()
+    public static float GetNo3Score()
     {
         return no3;
+    }
+
+    public static void SetEndingMsg(string msg)
+    {
+        endingMsg = msg;
+    }
+
+    public static string GetEndingMsg()
+    {
+        return endingMsg;
     }
 }

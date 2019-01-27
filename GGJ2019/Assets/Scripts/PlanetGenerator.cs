@@ -64,34 +64,34 @@ public class PlanetGenerator : MonoBehaviour
         switch (planetType)
         {
             case 1:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet1"));
                 break;
             case 2:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet2"));
                 break;
             case 3:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet3"));
                 break;
             case 4:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet4"));
                 break;
             case 5:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet5"));
                 break;
             case 6:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet6"));
                 break;
             case 7:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet7"));
                 break;
             case 8:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet8"));
                 break;
             case 9:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet9"));
                 break;
             default:
-                planet = Instantiate(Resources.Load<CelestialBody>("nicePlanet"));
+                planet = Instantiate(Resources.Load<CelestialBody>("Planet2"));
                 break;
         }
 
