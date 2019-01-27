@@ -55,5 +55,9 @@ public class PlayerController : MonoBehaviour
         if(!turning) {
             GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
         }
+
+        Vector3 currentPosition = GetComponent<Rigidbody>().transform.position;
+
+        GetComponent<Rigidbody>().transform.position = new Vector3(currentPosition.x, 0, currentPosition.z);
     }
 }
