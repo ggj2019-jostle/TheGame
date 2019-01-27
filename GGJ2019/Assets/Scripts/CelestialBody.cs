@@ -1,67 +1,97 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CelestialBody : MonoBehaviour
 {
     // For all the int values the reference is our Sun which would be equals to 1
 
-    public bool fixedBody = true;
-    public GameObject star;
+    public GameObject _star;
+    private Rigidbody rb;
 
-    public int translationSpeed = 10;
-    public int rotationSpeed = 10;
-    private float timecounter = 0;
+    public int TranslationSpeed;
+    public int RotationSpeed;
 
-    public CelestialBody(Color color, int temperature, float mass, float radius, float luminosity)
+    private GameObject player;
+    private float Timecounter;
+
+    private void Start()
     {
-        this.color = color;
-        this.temperature = temperature;
-        this.mass = mass;
-        this.radius = radius;
-        this.luminosity = luminosity;
+        rb = GetComponent<Rigidbody>();
+
+        TranslationSpeed = TranslationSpeed == null ? 10 : TranslationSpeed;
+        RotationSpeed = RotationSpeed == null ? 10 : RotationSpeed;
+
+        Timecounter = 0;
+
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
-    public Color color { get; }
-    public int temperature { get; }
-    public float mass { get; }
-    public float radius { get; }
-    public float luminosity { get; }
-
-    private void applyTranlation()
+    public CelestialBody(int temperature, float mass, float radius, float luminosity)
     {
-        if (star != null)
-        {
-            float speed = timecounter * translationSpeed / 100;
+        this.Temperature = temperature;
+        this.Mass = mass;
+        this.Radius = radius;
+        this.Luminosity = luminosity;
+    }
 
-            float R2x = Mathf.Pow(transform.position.x - star.transform.position.x, 2);
-            float R2y = Mathf.Pow(transform.position.y - star.transform.position.y, 2);
-            float R2z = Mathf.Pow(transform.position.z - star.transform.position.z, 2);
+    public int Temperature { get; }
+    public float Mass { get; }
+    public float Radius { get; }
+    public float Luminosity { get; }
+    public Rigidbody Rb { get => rb; }
+
+    private void ApplyTranslation()
+    {
+        if (_star != null)
+        {
+            float speed = Timecounter * TranslationSpeed / 100;
+
+            float R2x = Mathf.Pow(transform.position.x - _star.transform.position.x, 2);
+            float R2y = Mathf.Pow(transform.position.y - _star.transform.position.y, 2);
+            float R2z = Mathf.Pow(transform.position.z - _star.transform.position.z, 2);
 
             float R = Mathf.Sqrt(R2x + R2y + R2z);
 
             float x = Mathf.Cos(speed) * R;
             float y = 0;
-            float z_ = Mathf.Sin(speed) * R;
+            float z = Mathf.Sin(speed) * R;
 
-            transform.position = new Vector3(x, y, z_);
+            transform.position = new Vector3(x, y, z);
         }
     }
 
-    private void applyRotation()
+    private void ApplyRotation()
     {
 
-        transform.Rotate(new Vector3(0, -1, 0), rotationSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(0, -1, 0), RotationSpeed * Time.deltaTime);
     }
 
-    private void applyGravity() {
-        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+    private void ApplyGravity()
+    {
+        Rigidbody player_rb = player.GetComponent<Rigidbody>();
+
+        Vector3 distance = player_rb.position - rb.position;
+        float distanceMagnitude = distance.magnitude;
+
+
+        if (Mathf.Pow(distanceMagnitude, -2) < 0.1)
+            return;
+
+
+        float forceMagnitute = Constants.GRAVITACIONAL * (rb.mass * player_rb.mass) / Mathf.Pow(distanceMagnitude, 2);
+        Vector3 force = distance.normalized * forceMagnitute;
+
+        player_rb.AddForce(-force);
     }
+
 
     private void FixedUpdate()
     {
-        timecounter += Time.deltaTime;
-        applyTranlation();
-        applyRotation();
-        applyGravity();
+        Timecounter += Time.deltaTime;
+        ApplyTranslation();
+        ApplyRotation();
+        ApplyGravity();
     }
+
 
 }
