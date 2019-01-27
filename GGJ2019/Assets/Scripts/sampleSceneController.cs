@@ -2,22 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sampleSceneController : MonoBehaviour
+public class SampleSceneController : MonoBehaviour
 {
+    private StarGenerator starGenerator = new StarGenerator();
+    private int numberOfStars;
+
+    public static int minX = -500;
+    public static int maxX = 500;
+    public static int minY = -500;
+    public static int maxY = 500;
+    public static int minZ = -500;
+    public static int maxZ = 500;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        populateGame();
+        PopulateStars();
+        PopulatePlayer();
     }
 
     // Update is called once per frame
-    void Update()
+    void Update(){}
+
+    private void PopulatePlayer()
     {
-        
+        GameObject player = Instantiate(Resources.Load("player", typeof(GameObject))) as GameObject;
+    }
+
+    private void PopulateStars()
+    {
+        numberOfStars = Random.Range(starGenerator.minNumberOfStars, starGenerator.maxNumberOfStars);
+        starGenerator.SetUp(numberOfStars);
     }
 
     private void populateGame()
     {
         GameObject instance = Instantiate(Resources.Load("nicePlanet", typeof(GameObject))) as GameObject;
+        instance.transform.position = new Vector3(0, 0, 50);
     }
 }
