@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartSceneCanvas: MonoBehaviour
+public class StartSceneCanvas : MonoBehaviour
 {
     [SerializeField]
     private Button startButton;
@@ -13,18 +13,22 @@ public class StartSceneCanvas: MonoBehaviour
 
     void Start()
     {
-        startButton.onClick.AddListener(HandleClick);
+        startButton.onClick.AddListener(() => StartCoroutine(waitSoundFinishes()));
     }
 
     public void HandleClick()
     {
-<<<<<<< HEAD
-=======
         Debug.Log("Start button clicked");
-        new WaitForSeconds(3);
->>>>>>> 3e2766cf30d042ee37e6fd48123a6fc7154248f4
         SceneManager.LoadScene("SampleScene");
+    }
 
+    IEnumerator waitSoundFinishes()
+    {
+        var source = GameObject.FindGameObjectsWithTag("SFX")[0].GetComponent<AudioSource>();
+
+        source.Play();
+        yield return new WaitWhile(() => source.isPlaying);
+        HandleClick();
     }
 
 }
