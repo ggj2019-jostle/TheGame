@@ -40,13 +40,13 @@ public class CelestialBody : MonoBehaviour
 
             float x = Mathf.Cos(speed) * R;
             float y = 0;
-            float z = Mathf.Sin(speed) * R;
+            float z_ = Mathf.Sin(speed) * R;
 
-            transform.position = new Vector3(x, y, z);
+            transform.position = new Vector3(x, y, z_);
         }
     }
 
-    private void applySpin()
+    private void applyRotation()
     {
 
         transform.Rotate(new Vector3(0, -1, 0), rotationSpeed * Time.deltaTime);
@@ -60,7 +60,7 @@ public class CelestialBody : MonoBehaviour
     {
         timecounter += Time.deltaTime;
         applyTranlation();
-        applySpin();
+        applyRotation();
         applyGravity();
     }
 
