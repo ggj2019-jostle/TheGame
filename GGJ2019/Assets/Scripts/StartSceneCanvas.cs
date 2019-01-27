@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class StartSceneCanvas : MonoBehaviour
 {
+    [SerializeField]
     private Button startButton;
+    [SerializeField]
     private Text buttonText;
 
     void Start()
@@ -20,14 +22,6 @@ public class StartSceneCanvas : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    IEnumerator waitSoundFinishes()
-    {
-        var source = GameObject.FindGameObjectsWithTag("SFX")[0].GetComponent<AudioSource>();
-
-        Debug.Log("Start button clicked");
-        SceneManager.LoadScene("SampleScene");
-
-    }
     IEnumerator waitSoundFinishes()
     {
         var source = GameObject.FindGameObjectsWithTag("SFX")[0].GetComponent<AudioSource>();
